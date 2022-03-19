@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const User = () => {
+  const navigate = useNavigate();
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
@@ -10,6 +11,11 @@ const User = () => {
       .then((resParsed) => setUserData(resParsed))
       .catch((e) => alert(e.message));
   }, []);
+
+
+  const useTheNav = () => {
+    navigate('/');
+  }
 
   return (
     <div>
@@ -33,6 +39,7 @@ const User = () => {
           );
         })}
       </ul>
+      <button onClick={useTheNav} className="btn btn-primary">back home with navigate</button>
     </div>
   );
 };
